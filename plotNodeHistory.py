@@ -13,9 +13,9 @@ import getData
 
 savedpi = 125
 fileformat = 'pdf'
-savepath = '/home/markus/Desktop/galacticus_auswertung/nodeHistory/'
+savepath = 'nodeHistory/'
 #inputfile = '/media/daten/transfer/galacticus.hdf5'
-inputfile = '/home/markus/Desktop/galacticus_vergleich/galacticus.hdf5_wrongdmmass'
+inputfile = './galacticus_stages_56.hdf5'
 
 # For converting the lengths (check if also the masses)
 # to comoving (instead of comoving/h) we need the hubble
@@ -25,7 +25,7 @@ h = 0.7
 h5file = tables.openFile(inputfile,"r")
 
 # Get new timetable
-#timeTable = getData.getTimestepTable(h5file)
+timeTable = getData.getTimestepTable(h5file)
 #print timeTable
 
 # to save time, read timetable from file
@@ -62,13 +62,13 @@ if os.path.exists(savepath) == False:
 	os.mkdir(savepath)
 
 # get tIndexStart and tIndexEnd from the arguments
-tIndexStart = int(sys.argv[2])
-tIndexEnd = int(sys.argv[3])
+#tIndexStart = int(sys.argv[2])
+#tIndexEnd = int(sys.argv[3])
 
 # time index (of the timetable) where we want to start with our plots
-# tIndexStart = 0
+tIndexStart = 0
 # tIndex of the z=0 group
-# tIndexEnd = len(timeTable)-1
+tIndexEnd = len(timeTable)-1
 
 
 # determine at which time Index the halo starts to contain data
@@ -78,15 +78,16 @@ for i in range(0,len(timeTable)):
 		tIndexNodeDataStart = i
 		#print 'First halo data at tIndex ', i
 		break
-if tIndexNodeDataStart == len(timeTable)-1:
-	print 'Attention, halo is only present at z=0?'
-	sys.exit(1)
-if tIndexNodeDataStart > tIndexEnd:
-	print 'Attention, no halo data in selected time range'
+#if tIndexNodeDataStart == len(timeTable)-1:
+	#print 'Attention, halo is only present at z=0?'
+	#sys.exit(1)
+#if tIndexNodeDataStart > tIndexEnd:
+	#print 'Attention, no halo data in selected time range'
 
 
 # loop over the timesteps from tIndexStart to tIndexEnd
 for tIndex in range(tIndexStart,tIndexEnd+1):
+	print 'indstart:', tIndexStart, 'tindexend:', tIndexEnd 
 	print 'tstep ', tIndex, 'time: ', timeTable[tIndex,1]
 	# get the nodeData for tIndex
 	nodeData = getData.getOutput(h5file,timeTable[tIndex,0])
@@ -141,14 +142,14 @@ for tIndex in range(tIndexStart,tIndexEnd+1):
 
 	ax1 = fig.add_subplot(121, projection='3d')
 	# plot all the nodes
-	ax1.scatter(positionX,positionY,positionZ,alpha=0.5,s=1.0)
+	ax1.scatter(positionX,positionY,positionZ,alpha=0.3,s=0.5)
 	# plot our traced halo
 	if tIndex>=tIndexNodeDataStart:
 		# plot the current position of selected nodes as big point
 		ax1.scatter([nodeHistory[tIndex-tIndexNodeDataStart].positionX]/timeTable[tIndex,2]*h,
 			    [nodeHistory[tIndex-tIndexNodeDataStart].positionY]/timeTable[tIndex,2]*h,
 			    [nodeHistory[tIndex-tIndexNodeDataStart].positionZ]/timeTable[tIndex,2]*h
-			    ,alpha=0.8,s=40.0,c='r')
+			    ,alpha=0.8,s=50.0,c='#610B4B')
 		# plot the trajectory of selected nodes up to tIndex
 		ax1.plot3D(plotDataPosition[:,0],plotDataPosition[:,1],plotDataPosition[:,2],'r')
 	ax1.set_xlabel('Mpc/h (comoving)')

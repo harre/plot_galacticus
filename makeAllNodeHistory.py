@@ -9,10 +9,10 @@ command = 'python getNodeHistory.py '+nodeArrayIndex
 print command
 os.system(command)
 
-tStart=174
-tEnd= 175
+tStart=0
+tEnd=199
 for tstep in range(tStart,tEnd):
-	command = 'python plotNodeHistory.py '+nodeArrayIndex+' '+str(tstep)+' '+str(tstep)
+	command = 'python plotNodeHistory.py '+nodeArrayIndex+' '+str(tStart)+' '+str(tstep)
 	print command
 	os.system(command)
 

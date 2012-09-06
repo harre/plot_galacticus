@@ -12,7 +12,7 @@ import getData
 savedpi = 250
 fileformat = 'png'
 savepath = './'
-inputfile = '/home/markus/Desktop/galacticus_vergleich/galacticus.hdf5_wrongdmmass'
+inputfile = 'galacticus_Salpeter_20905.hdf5'
 #inputfile = './galacticus.hdf5'
 
 # Give the arrayIndex as argument
@@ -47,6 +47,8 @@ timeTable = getData.getTimestepTable(h5file)
 # and goes to redshift = 0. Its length corresponds
 # to the number of timesteps in our galacticus file
 # Format: nodeDataIndex, time since big bang, scale factor, z
+
+print 'timeTable: ', timeTable 
 
 # output the timeTable for debugging purposes
 print timeTable

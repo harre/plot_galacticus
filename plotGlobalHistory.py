@@ -9,7 +9,7 @@ savedpi = 150
 fileformat = 'pdf'
 savepath = './'
 
-inputfile = '/media/daten/transfer/galacticus.hdf5'
+inputfile = './galacticus.hdf5'
 
 h5file = tables.openFile(inputfile,'r')
 
