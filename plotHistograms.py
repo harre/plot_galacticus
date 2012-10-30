@@ -11,7 +11,7 @@ import getData
 savedpi = 250
 fileformat = 'png'
 savepath = 'histograms/'
-inputfile = 'galacticus_13076_1_manyoutputs.hdf5'
+inputfile = 'NGenIC_17794_2.hdf5'
 #inputfile = './galacticus.hdf5'
 
 
@@ -44,7 +44,7 @@ def makeHistogram(titlestring,data,binspace,ylimits,xlog,ylog,xlabel):
 	ax.set_ylabel('#')
 	ax.set_title(title)
 	fig.text(0.82,0.95,r'z = %.2f'%timeTable[tstep,3])
-	title = (savepath+title+'galacticus_13076_1_manyoutputs.hdf5'+' '+str(tstep).zfill(4)+'.'+fileformat).replace(" ","_")
+	title = (savepath+title+'NGenIC_17794_2.hdf5'+' '+str(tstep).zfill(4)+'.'+fileformat).replace(" ","_")
 	plt.savefig(title,dpi=savedpi,format=fileformat)
 
 

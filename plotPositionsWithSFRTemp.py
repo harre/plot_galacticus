@@ -79,7 +79,7 @@ for i in range(tStart,tEnd):
 
 	# Plot the inner 2 Mpc and color code them
 	plimit=5.0	       # allowed distance from the center in Mpc
-	title = 'inputtemp Halo Positions with SFR'
+	title = 'inputtemp Halo Positions with absolute SFR'
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection='3d')
 	# Select points according to position
@@ -107,7 +107,7 @@ for i in range(tStart,tEnd):
 	mask=mask.astype(bool)
 	for i in range(nHalos):
 		mask[i] = False
-		if(starFormation[i]<1E-5):
+		if(starFormation[i]<1E8):
 			mask[i] = True & pmask[i]
 	# Attention: Scatter changes the alpha channel according to
 	# the distance to the observing point, if you don't want this,
@@ -121,28 +121,28 @@ for i in range(tStart,tEnd):
        #	   c='k',ms=2.0)
 	for i in range(nHalos):
 		mask[i] = False
-		if(1E-5<starFormation[i]<1E-4):
+		if(1E8<starFormation[i]<1E9):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			   c='#424242',s=10,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(1E-4<starFormation[i]<1E-3):
+		if(1E9<starFormation[i]<1E10):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		   ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			      c='#DF0174',s=25,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(1E-3<starFormation[i]<1E-2):
+		if(1E10<starFormation[i]<1E11):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			   c='#9E0050',s=50,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(1E-2<starFormation[i]):
+		if(1E11<starFormation[i]):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],

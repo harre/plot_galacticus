@@ -21,7 +21,7 @@ savedpi = 250
 fileformat = 'png'
 savepath = 'positionPlots/'
 #inputfile = '/media/daten/transfer/galacticus.hdf5'
-inputfile = 'galacticus_13076_1_manyoutputs.hdf5'
+inputfile = 'NGenIC_17794_2.hdf5'
 
 h5file = tables.openFile(inputfile,"r")
 
@@ -79,7 +79,7 @@ for i in range(tStart,tEnd):
 
 	# Plot the inner 2 Mpc and color code them
 	plimit=5.0	       # allowed distance from the center in Mpc
-	title = 'galacticus_13076_1_manyoutputs.hdf5 Halo Positions with SFR'
+	title = 'NGenIC_17794_2.hdf5 Halo Positions with absolute SFR'
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection='3d')
 	# Select points according to position
@@ -107,7 +107,7 @@ for i in range(tStart,tEnd):
 	mask=mask.astype(bool)
 	for i in range(nHalos):
 		mask[i] = False
-		if(starFormation[i]<10**7):
+		if(starFormation[i]<1E8):
 			mask[i] = True & pmask[i]
 	# Attention: Scatter changes the alpha channel according to
 	# the distance to the observing point, if you don't want this,
@@ -121,28 +121,28 @@ for i in range(tStart,tEnd):
        #	   c='k',ms=2.0)
 	for i in range(nHalos):
 		mask[i] = False
-		if(10**7<starFormation[i]<10**8):
+		if(1E8<starFormation[i]<1E9):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			   c='#424242',s=10,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(10**8<starFormation[i]<10**9):
+		if(1E9<starFormation[i]<1E10):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		   ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			      c='#DF0174',s=25,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(10**9<starFormation[i]<10**10):
+		if(1E10<starFormation[i]<1E11):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],
 			   c='#9E0050',s=50,edgecolors='none')
 	for i in range(nHalos):
 		mask[i] = False
-		if(10**10<starFormation[i]):
+		if(1E11<starFormation[i]):
 			mask[i] = True & pmask[i]
 	if len(positionX[mask])>0:
 		ax.scatter(positionX[mask], positionY[mask], positionZ[mask],

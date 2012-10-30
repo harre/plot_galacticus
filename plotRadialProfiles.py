@@ -22,7 +22,7 @@ savedpi = 250
 fileformat = 'png'
 savepath = 'radialProfiles/'
 #inputfile = '/media/daten/transfer/galacticus.hdf5'
-inputfile = 'galacticus_13076_1_manyoutputs.hdf5'
+inputfile = 'NGenIC_17794_2.hdf5'
 
 h5file = tables.openFile(inputfile,"r")
 
@@ -221,7 +221,7 @@ mean = [mean1, mean2, mean3, mean4, mean5, mean6, mean7, mean8, mean9, mean10]
 #plimit = [plimit1-(plimit2-plimit1)/2.0, plimit2-(plimit3-plimit2)/2.0, plimit3-(plimit4-plimit3)/2.0, plimit4-(plimit5-plimit4)/2.0, plimit5-(plimit6-plimit5)/2.0, plimit6-(plimit7-plimit6)/2.0, plimit7-(plimit8-plimit7)/2.0, plimit8-(plimit8-plimit7)/2.0, plimit9-(plimit9-plimit8)/2.0, plimit9-(plimit10-plimit9)/2.0]
 plimit = [plimit1, plimit2, plimit3, plimit4, plimit5, plimit6, plimit7, plimit8, plimit9, plimit10]
 
-title = savepath+'Gas Component, galacticus_13076_1_manyoutputs.hdf5'
+title = savepath+'Gas Component, NGenIC_17794_2.hdf5'
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(plimit, mean, 'ro', c='#424242')

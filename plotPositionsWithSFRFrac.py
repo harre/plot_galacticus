@@ -21,7 +21,7 @@ savedpi = 250
 fileformat = 'png'
 savepath = 'positionPlots/'
 #inputfile = '/media/daten/transfer/galacticus.hdf5'
-inputfile = 'galacticus_Salpeter_20905.hdf5'
+inputfile = 'NGenIC_17794_2.hdf5'
 
 h5file = tables.openFile(inputfile,"r")
 
@@ -79,7 +79,7 @@ for i in range(tStart,tEnd):
 
 	# Plot the inner 2 Mpc and color code them
 	plimit=5.0	       # allowed distance from the center in Mpc
-	title = 'galacticus_Salpeter_20905.hdf5 Halo Positions with SFR Fractional'
+	title = 'NGenIC_17794_2.hdf5 Halo Positions with SFR Fractional'
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection='3d')
 	# Select points according to position
